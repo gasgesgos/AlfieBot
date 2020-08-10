@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29905.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlfieBot", "AlfieBot\AlfieBot.csproj", "{606340CC-5E8C-426F-84AA-A37F2460B8D5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlfieBot.Config", "AlfieBot.Configuration\AlfieBot.Config.csproj", "{3F457F8D-D823-4DC8-A66F-8D97F6C16084}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlfieBot.Conversations", "AlfieBot.Conversations\AlfieBot.Conversations.csproj", "{1C6C0B39-6874-4F8C-BF94-2A911A7FD119}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlfieBot.Commands", "AlfieBot.Commands\AlfieBot.Commands.csproj", "{6240EE54-AF40-45A4-BF6D-7A33DC7AB36D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{606340CC-5E8C-426F-84AA-A37F2460B8D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{606340CC-5E8C-426F-84AA-A37F2460B8D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{606340CC-5E8C-426F-84AA-A37F2460B8D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{606340CC-5E8C-426F-84AA-A37F2460B8D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F457F8D-D823-4DC8-A66F-8D97F6C16084}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F457F8D-D823-4DC8-A66F-8D97F6C16084}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F457F8D-D823-4DC8-A66F-8D97F6C16084}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F457F8D-D823-4DC8-A66F-8D97F6C16084}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C6C0B39-6874-4F8C-BF94-2A911A7FD119}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C6C0B39-6874-4F8C-BF94-2A911A7FD119}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C6C0B39-6874-4F8C-BF94-2A911A7FD119}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C6C0B39-6874-4F8C-BF94-2A911A7FD119}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6240EE54-AF40-45A4-BF6D-7A33DC7AB36D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6240EE54-AF40-45A4-BF6D-7A33DC7AB36D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6240EE54-AF40-45A4-BF6D-7A33DC7AB36D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6240EE54-AF40-45A4-BF6D-7A33DC7AB36D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A0C58A56-ACCD-4350-B39A-C8DE36690E07}
+	EndGlobalSection
+EndGlobal
