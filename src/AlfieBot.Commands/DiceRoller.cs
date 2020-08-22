@@ -9,7 +9,7 @@
     using System.Globalization;
     using System.Diagnostics.Contracts;
 
-    public class DiceRoller
+    public class DiceRoller : BaseCommandModule
     {
         /// <summary>
         /// Rolls dice, specified in the message.

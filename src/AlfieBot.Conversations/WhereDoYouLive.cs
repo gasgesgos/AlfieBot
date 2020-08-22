@@ -2,8 +2,8 @@
 {
     using System;
     using System.Linq;
-    using System.Threading.Tasks;
     using AlfieBot.Config;
+    using DSharpPlus;
     using DSharpPlus.EventArgs;
 
     public class WhereDoYouLive
@@ -13,22 +13,25 @@
         /// </summary>
         /// <param name="e">Current message creation event args and context.</param>
         /// <remarks>Handy for debugging, to determine where the current bot connection is being hosted.</remarks>
-        public static async Task WhereDoesTheBotLive(MessageCreateEventArgs e)
+        public static AsyncEventHandler<MessageCreateEventArgs> WhereDoesTheBotLive(EnvironmentSettings envSettings)
         {
-            if (e.Message.MentionedUsers.Contains(e.Client.CurrentUser))
+            return async (MessageCreateEventArgs e) =>
             {
-                if (e.Message.Content.Contains("where do you live?", StringComparison.OrdinalIgnoreCase))
+                if (e.Message.MentionedUsers.Contains(e.Client.CurrentUser))
                 {
-                    await e.Message.RespondAsync(
-                        ConfigurationProvider.Instance.ConfigSettings.IsLocalDev
-                        ? "I live in someone's computer."
-                        : "I live in the cloud.").ConfigureAwait(false);
+                    if (e.Message.Content.Contains("where do you live?", StringComparison.OrdinalIgnoreCase))
+                    {
+                        await e.Message.RespondAsync(
+                            envSettings.IsLocalDev
+                            ? "I live in someone's computer."
+                            : "I live in the cloud.").ConfigureAwait(false);
+                    }
+                    else
+                    {
+                        await e.Message.RespondAsync("I'm not sure what you're going on about.").ConfigureAwait(false);
+                    }
                 }
-                else
-                {
-                    await e.Message.RespondAsync("I'm not sure what you're going on about.").ConfigureAwait(false);
-                }
-            }
+            };
         }
     }
 }

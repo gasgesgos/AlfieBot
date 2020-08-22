@@ -5,7 +5,7 @@
     using DSharpPlus.CommandsNext;
     using DSharpPlus.CommandsNext.Attributes;
 
-    public class Haldo
+    public class Haldo : BaseCommandModule
     {
         /// <summary>
         /// Greets a user.

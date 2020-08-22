@@ -9,7 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlfieBot.Config", "AlfieBot
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlfieBot.Conversations", "AlfieBot.Conversations\AlfieBot.Conversations.csproj", "{1C6C0B39-6874-4F8C-BF94-2A911A7FD119}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlfieBot.Commands", "AlfieBot.Commands\AlfieBot.Commands.csproj", "{6240EE54-AF40-45A4-BF6D-7A33DC7AB36D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlfieBot.Commands", "AlfieBot.Commands\AlfieBot.Commands.csproj", "{6240EE54-AF40-45A4-BF6D-7A33DC7AB36D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlfieBot.Storage", "AlfieBot.Storage\AlfieBot.Storage.csproj", "{A1CD5847-589D-4033-909F-087E334D25E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlfieBot.Abstractions", "AlfieBot.Abstractions\AlfieBot.Abstractions.csproj", "{6F78D0CD-904C-4DED-AAD5-4162A8D8861C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{6240EE54-AF40-45A4-BF6D-7A33DC7AB36D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6240EE54-AF40-45A4-BF6D-7A33DC7AB36D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6240EE54-AF40-45A4-BF6D-7A33DC7AB36D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1CD5847-589D-4033-909F-087E334D25E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1CD5847-589D-4033-909F-087E334D25E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1CD5847-589D-4033-909F-087E334D25E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1CD5847-589D-4033-909F-087E334D25E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F78D0CD-904C-4DED-AAD5-4162A8D8861C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F78D0CD-904C-4DED-AAD5-4162A8D8861C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F78D0CD-904C-4DED-AAD5-4162A8D8861C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F78D0CD-904C-4DED-AAD5-4162A8D8861C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

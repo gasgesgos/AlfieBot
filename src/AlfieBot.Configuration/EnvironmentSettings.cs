@@ -1,6 +1,6 @@
 ﻿namespace AlfieBot.Config
 {
-    public class ConfigurationSettings
+    public class EnvironmentSettings
     {
         public string LocalDev { get; set; }
 
