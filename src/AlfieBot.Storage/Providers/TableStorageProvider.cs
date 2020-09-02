@@ -1,8 +1,11 @@
 ﻿
-namespace AlfieBot.Storage.Providers
+namespace AlfieBot.Data.Providers
 {
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
+    using AlfieBot.Abstractions;
     using AlfieBot.Abstractions.Models;
     using Microsoft.Azure.Cosmos.Table;
     using Microsoft.Extensions.Logging;
@@ -20,6 +23,7 @@ namespace AlfieBot.Storage.Providers
             this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
+        /// <inheritdoc/>
         public async Task AddOrUpdateAsync(T entity)
         {
             var adapter = new TableEntityAdapter<T>(entity, entity.PartitionKey, entity.RowKey);
@@ -31,15 +35,19 @@ namespace AlfieBot.Storage.Providers
             await ExecuteOperation(entity, table, operation).ConfigureAwait(false);
         }
 
+        /// <inheritdoc/>
         public async Task DeleteAsync(T entity)
         {
             var adapter = new TableEntityAdapter<T>(entity, entity.PartitionKey, entity.RowKey);
+            adapter.ETag = "*";
+            
             var table = this.client.GetTableReference(this.TableName);
-
+            
             var operation = TableOperation.Delete(adapter);
             await ExecuteOperation(entity, table, operation).ConfigureAwait(false);
         }
 
+        /// <inheritdoc/>
         public async Task<T> ReadAsync(string partition, string key)
         {
             var table = this.client.GetTableReference(this.TableName);
@@ -47,6 +55,28 @@ namespace AlfieBot.Storage.Providers
             var result = await ExecuteOperation(table, operation).ConfigureAwait(false);
 
             return result;
+        }
+
+        /// <inheritdoc/>
+        public async Task<bool> RecordExists(T entity)
+        {
+            return await this.ReadAsync(entity.PartitionKey, entity.PartitionKey).ConfigureAwait(false) != null;
+        }
+
+        public async Task<bool> RecordExists(string partitionKey, string rowKey)
+        {
+            return await this.ReadAsync(partitionKey, rowKey).ConfigureAwait(false) != null;
+        }
+
+        /// <inheritdoc/>
+        public Task<IEnumerable<T>> ReadPartition(string partition)
+        {
+            var table = this.client.GetTableReference(this.TableName);
+
+            var filter = TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, partition);
+            var query = new TableQuery<TableEntityAdapter<T>>().Where(filter);
+
+            return ExecuteOperation(table, query);
         }
 
         /// <summary>
@@ -81,6 +111,15 @@ namespace AlfieBot.Storage.Providers
             {
                 logger.LogError("Save of {typename} failed, key {partition}:{row}. Status code {resultCode}, {message}.", typeof(T).Name, entity.PartitionKey, entity.RowKey, result.HttpStatusCode, result.Result.ToString());
             }
+        }
+
+        /// <summary>
+        /// Executes an operation that returns a set of results based on a query.
+        /// </summary>
+        private async Task<IEnumerable<T>> ExecuteOperation(CloudTable table, TableQuery<TableEntityAdapter<T>> tableQuery)
+        {
+            // Make this async/segmented
+            return await Task.Run(() => table.ExecuteQuery<TableEntityAdapter<T>>(tableQuery).Select(x => x.OriginalEntity));
         }
     }
 }

@@ -20,6 +20,7 @@
             return collection
                 .Configure<BotSettings>(configRoot.GetSection(nameof(BotSettings)))
                 .Configure<StorageSettings>(configRoot.GetSection(nameof(StorageSettings)))
+                .Configure<ServiceBusSettings>(configRoot.GetSection(nameof(ServiceBusSettings)))
                 .Configure<EnvironmentSettings>(configRoot.GetSection(nameof(EnvironmentSettings)));
         }
     }

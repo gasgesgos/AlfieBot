@@ -1,11 +1,20 @@
-﻿namespace AlfieBot.Abstractions.Models
+﻿using System;
+
+namespace AlfieBot.Abstractions.Models
 { 
-    public class UserLevel : UserBasedEntity, IKeyedEntity
+    public class UserLevel : UserEntity
     {
-        public string PartitionKey => ServerName;
+        public override string RowKey => "UserLevel";
 
-        public string RowKey => UserName;
+        public int? Level { get; set; }
 
-        public int Level { get; set; }
+        public static string GeneratePartitionKey(ulong serverId, ulong userId)
+        {
+            return UserEntity.FormatPartitionKey(serverId, userId);
+        }
+        public static string GenerateRowKey()
+        {
+            return "UserLevel";
+        }
     }
 }

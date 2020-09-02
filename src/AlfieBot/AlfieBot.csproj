@@ -16,10 +16,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AlfieBot.Abstractions\AlfieBot.Abstractions.csproj" />
+    <ProjectReference Include="..\AlfieBot.Annoucements\AlfieBot.Annoucements.csproj" />
     <ProjectReference Include="..\AlfieBot.Commands\AlfieBot.Commands.csproj" />
     <ProjectReference Include="..\AlfieBot.Configuration\AlfieBot.Config.csproj" />
     <ProjectReference Include="..\AlfieBot.Conversations\AlfieBot.Conversations.csproj" />
-    <ProjectReference Include="..\AlfieBot.Storage\AlfieBot.Storage.csproj" />
+    <ProjectReference Include="..\AlfieBot.Storage\AlfieBot.Data.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="Settings.job">

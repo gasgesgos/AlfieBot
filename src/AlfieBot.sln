@@ -11,9 +11,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlfieBot.Conversations", "A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlfieBot.Commands", "AlfieBot.Commands\AlfieBot.Commands.csproj", "{6240EE54-AF40-45A4-BF6D-7A33DC7AB36D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlfieBot.Storage", "AlfieBot.Storage\AlfieBot.Storage.csproj", "{A1CD5847-589D-4033-909F-087E334D25E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlfieBot.Data", "AlfieBot.Storage\AlfieBot.Data.csproj", "{A1CD5847-589D-4033-909F-087E334D25E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlfieBot.Abstractions", "AlfieBot.Abstractions\AlfieBot.Abstractions.csproj", "{6F78D0CD-904C-4DED-AAD5-4162A8D8861C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlfieBot.Abstractions", "AlfieBot.Abstractions\AlfieBot.Abstractions.csproj", "{6F78D0CD-904C-4DED-AAD5-4162A8D8861C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlfieBot.Permissions", "AlfieBot.Permissions\AlfieBot.Permissions.csproj", "{D515C38D-FE66-47DB-A380-6247CE4C29D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlfieBot.Annoucements", "AlfieBot.Annoucements\AlfieBot.Annoucements.csproj", "{4848F8CD-9F08-4232-AAB9-93A1C21FB70C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,14 @@ Global
 		{6F78D0CD-904C-4DED-AAD5-4162A8D8861C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F78D0CD-904C-4DED-AAD5-4162A8D8861C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F78D0CD-904C-4DED-AAD5-4162A8D8861C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D515C38D-FE66-47DB-A380-6247CE4C29D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D515C38D-FE66-47DB-A380-6247CE4C29D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D515C38D-FE66-47DB-A380-6247CE4C29D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D515C38D-FE66-47DB-A380-6247CE4C29D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4848F8CD-9F08-4232-AAB9-93A1C21FB70C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4848F8CD-9F08-4232-AAB9-93A1C21FB70C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4848F8CD-9F08-4232-AAB9-93A1C21FB70C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4848F8CD-9F08-4232-AAB9-93A1C21FB70C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

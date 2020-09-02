@@ -8,9 +8,14 @@
     using System.Linq;
     using System.Globalization;
     using System.Diagnostics.Contracts;
+    using AlfieBot.Permissions;
 
     public class DiceRoller : BaseCommandModule
     {
+        public DiceRoller()
+        {
+        }
+
         /// <summary>
         /// Rolls dice, specified in the message.
         /// </summary>
@@ -20,6 +25,7 @@
         public async Task ProcessRoll(CommandContext ctx, params string[] dice)
         {
             Contract.Assert(ctx != null);
+
 
             var response = new StringBuilder();
 

@@ -6,12 +6,11 @@
 
   <ItemGroup>
     <PackageReference Include="DSharpPlus" Version="4.0.0-nightly-00712" />
-    <PackageReference Include="DSharpPlus.CommandsNext" Version="4.0.0-nightly-00712" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.7" />
   </ItemGroup>
-
+  
   <ItemGroup>
     <ProjectReference Include="..\AlfieBot.Abstractions\AlfieBot.Abstractions.csproj" />
-    <ProjectReference Include="..\AlfieBot.Permissions\AlfieBot.Permissions.csproj" />
   </ItemGroup>
 
 </Project>

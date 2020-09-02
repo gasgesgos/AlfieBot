@@ -1,14 +1,20 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="kgktlcie.tqy~" />
+  </ItemGroup>
+  
+  <ItemGroup>
     <PackageReference Include="DSharpPlus" Version="4.0.0-nightly-00712" />
     <PackageReference Include="DSharpPlus.CommandsNext" Version="4.0.0-nightly-00712" />
+    <PackageReference Include="Microsoft.Azure.ServiceBus" Version="4.1.3" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="3.1.7" />
   </ItemGroup>
-
+  
   <ItemGroup>
     <ProjectReference Include="..\AlfieBot.Abstractions\AlfieBot.Abstractions.csproj" />
     <ProjectReference Include="..\AlfieBot.Permissions\AlfieBot.Permissions.csproj" />

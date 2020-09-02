@@ -3,9 +3,9 @@
     using System;
     using System.Threading.Tasks;
     using AlfieBot.Abstractions.Models;
-    using Storage.Providers;
     using DSharpPlus.CommandsNext;
     using DSharpPlus.CommandsNext.Attributes;
+    using AlfieBot.Abstractions;
 
     public class UserLevels : BaseCommandModule
     {
@@ -19,7 +19,10 @@
         [Command("getlevel")]
         public async Task ReadLevel(CommandContext ctx, string username)
         {
-            var level = await this.storageProvider.ReadAsync(ctx.Guild.Name, ctx.User.Username).ConfigureAwait(false);
+            var partition = UserLevel.GeneratePartitionKey(ctx.Guild.Id, ctx.User.Id);
+            var key = UserLevel.GenerateRowKey();
+            
+            var level = await this.storageProvider.ReadAsync(partition, key).ConfigureAwait(false);
             if (level != null)
             {
                 await ctx.RespondAsync($"{username} is level {level.Level}.").ConfigureAwait(false);
@@ -33,13 +36,17 @@
         [Command("levelup")]
         public async Task AddLevel(CommandContext ctx)
         {
-            var level = await this.storageProvider.ReadAsync(ctx.Guild.Name, ctx.User.Username) ?? new UserLevel() { ServerName = ctx.Guild.Name, UserName = ctx.User.Username, Level = 0 };
+            var partition = UserLevel.GeneratePartitionKey(ctx.Guild.Id, ctx.User.Id);
+            var key = UserLevel.GenerateRowKey();
+
+
+            var level = await this.storageProvider.ReadAsync(partition, key) ?? new UserLevel() { ServerId = ctx.Guild.Id, UserId = ctx.User.Id, Level = 0 };
 
             level.Level += 1;
 
             await this.storageProvider.AddOrUpdateAsync(level);
             
-            await ctx.RespondAsync($"{level.UserName} is now level {level.Level}.");
+            await ctx.RespondAsync($"{ctx.User.Username} is now level {level.Level}.");
         }
 
     }

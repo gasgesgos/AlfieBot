@@ -1,10 +1,13 @@
 ﻿namespace AlfieBot
 {
-    using System.Threading.Tasks;
+    using System;
+    using AlfieBot.Annoucements;
+    using Config;
+    using Data;
+    using DSharpPlus;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
-    using Storage;
-    using Config;
+    using Microsoft.Extensions.Options;
 
     public static class Program
     {
@@ -16,16 +19,38 @@
             CreateHostBuilder(args).Build().Run();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
+        public static IHostBuilder CreateHostBuilder(string[] args)
+        {
+            return Host.CreateDefaultBuilder(args)
                 .ConfigureServices((hostContext, services) =>
                 {
                     services
                         .AddConfiguration()
-                        .AddCloudTableClient()
-                        .AddTableStorageProvider()
-                        .AddHostedService<Worker>();
-                });
-        
+                        .AddDiscordClient()
+                        .AddDataHandlers()
+                        .AddHostedService<Worker>()
+                        .AddHostedService<Announcer>();
+                }
+            );
+        }
+
+        public static IServiceCollection AddDiscordClient(this IServiceCollection collection)
+        {
+            return collection.AddSingleton<DiscordClient>((opts) => 
+            {
+                var botConfig = opts.GetRequiredService<IOptions<BotSettings>>();
+
+                var token = botConfig?.Value.BotToken ?? throw new InvalidOperationException("Cannot create discord client without a token.");
+
+                return new DiscordClient(
+                   new DiscordConfiguration()
+                   {
+                       TokenType = TokenType.Bot,
+                       Token = token,
+                       UseInternalLogHandler = true,
+                       LogLevel = LogLevel.Debug
+                   });
+            });
+        }
     }
 }
